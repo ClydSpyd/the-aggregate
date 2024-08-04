@@ -1,0 +1,22 @@
+.nav-container{
+    display: grid;
+    grid-template-columns:  250px auto 250px;
+
+    > div{
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .items{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+    }
+
+    .options{
+        justify-content: end;
+    }
+}

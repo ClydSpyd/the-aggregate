@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-one: #284389;
+  --brand-two: #41D926;
+  --brand-three: #00FFFB;
+  --brand-four: #E5F20D;
+  --brand-five: #5D00FF;
+  --brand-six: #F20DAF;
+  --brand-seven: #0075FF;
+  --brand-eight: #E61A1A;
+}
+

@@ -41,7 +41,7 @@ export default function PageHero({
 
   return (
     topStories[0] && (
-      <div className="w-full h-[80%] flex items-end px-8 py-6 relative">
+      <div className="w-full h-[80vh] flex items-end px-8 py-6 relative">
         <Image
           alt={"hero image"}
           src={imageUrl}

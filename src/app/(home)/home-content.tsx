@@ -4,7 +4,7 @@ import Track from "@/components/track";
 import axios from "axios";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
-export default function Home() {
+export default function HomeContent() {
   const [stories, setStories] = useState<PerigonArticle[] | null>(null);
   const [storiesTech, setStoriesTech] = useState<PerigonArticle[] | null>(null);
   const [storiesScience, setStoriesScience] = useState<PerigonArticle[] | null>(null);
@@ -58,11 +58,6 @@ export default function Home() {
           <Track idx={2} title="Politics" articles={storiesPolitics ?? []} />
           <Track idx={3} title="Science" articles={storiesScience ?? []} />
           <Track idx={4} title="Lifestyle" articles={storiesLifestyle ?? []} />
-          <div className="fixed top-0 bottom-0 w-full overflow-hidden z-[-1]">
-            <div className="absolute h-[850px] w-[850px] bottom-[-800px] right-[-200px] flare opacity-70" />
-            <div className="fixed h-[1700px] w-[1700px] top-[-1000px] right-[-900px] flare opacity-80" />
-            <div className="absolute h-[1700px] w-[1700px] top-[-100px] left-[-1000px] flare opacity-65" />
-          </div>
         </div>
       </>
     )

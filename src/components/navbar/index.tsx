@@ -6,6 +6,7 @@ import SearchWidget from "./search-widget";
 import useSticky from "@/hooks/useSticky";
 import { cn } from "@/lib/utils";
 import LogoDynamic from "../ui/logo-dynamic";
+import Link from "next/link";
 
 const navItems: NavItem[] = [
   {
@@ -38,7 +39,9 @@ const Content = ({ sticky }: { sticky: boolean }) => {
   return (
     <>
       <div className="h-[50px] gap-3 font-inter text-white font-semibold text-xl overflow-hidden">
-        <LogoDynamic />
+        <Link href={"/"}>
+          <LogoDynamic />
+        </Link>
       </div>
       <div className="items">
         {navItems.map((item: NavItem, idx: number) => (

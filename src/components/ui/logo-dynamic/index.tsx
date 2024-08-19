@@ -1,3 +1,4 @@
+"use client"
 import animationData from "@/animations/logo-loop.json";
 import { cn } from "@/lib/utils";
 import { useEffect, useRef, useState } from "react";

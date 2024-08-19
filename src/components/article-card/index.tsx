@@ -20,7 +20,7 @@ export default function ArticleCard({ article }: Props) {
   return (
     <div
       ref={containerRef}
-      className="cardContainer flex flex-col items-center justify-between rounded-2xl overflow-hidden h-full mx-2 p-2 pb-0 border border-white/20 group"
+      className="cardContainer flex flex-col items-center justify-between rounded-2xl overflow-hidden h-full mx-2 p-2 pb-0 border border-white/20 group hover:border-white/40 ease-out duration-300"
     >
       <div className="h-[170px] w-full relative rounded-xl overflow-hidden">
         <Image

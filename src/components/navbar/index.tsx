@@ -5,6 +5,7 @@ import { MdManageAccounts } from "react-icons/md";
 import SearchWidget from "./search-widget";
 import useSticky from "@/hooks/useSticky";
 import { cn } from "@/lib/utils";
+import LogoDynamic from "../ui/logo-dynamic";
 
 const navItems: NavItem[] = [
   {
@@ -36,14 +37,8 @@ const navItems: NavItem[] = [
 const Content = ({ sticky }: { sticky: boolean }) => {
   return (
     <>
-      <div className="gap-3 font-inter text-white font-semibold text-xl">
-        <Image
-          src={"/images/logo.png"}
-          height={20}
-          width={50}
-          alt="aggregate_logo"
-        />
-        <h1>The Aggregate</h1>
+      <div className="h-[50px] gap-3 font-inter text-white font-semibold text-xl overflow-hidden">
+        <LogoDynamic />
       </div>
       <div className="items">
         {navItems.map((item: NavItem, idx: number) => (

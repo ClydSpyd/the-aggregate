@@ -4,16 +4,18 @@ import "@/styles/page-hero.scss";
 import { cn } from "@/lib/utils";
 import useCarousel from "./useCarousel";
 import { useEffect, useState } from "react";
+import { FaEye } from "react-icons/fa";
+
 
 const SlideContent = ({ story }: { story: PerigonArticle }) => {
   const { title, description, categories } = story;
   return (
     <>
-      {categories.length > 0 && (
+      {/* {categories.length > 0 && (
         <div className="px-2 bg-brandOne text-white rounded-full w-fit text-sm mb-1 lowercase pointer-events-none">
           {categories[0]?.name}
         </div>
-      )}
+      )} */}
       <h1 className="text-[35px] leading-tight text-white font-bold mb-2 max-w-[650px] ">
         {title}
       </h1>
@@ -22,8 +24,9 @@ const SlideContent = ({ story }: { story: PerigonArticle }) => {
           ? `${description.slice(0, 199)}...`
           : description}
       </p>
-      <div className="h-[35px] w-[150px] rounded-md text-brandOne bg-white flex items-center justify-center mt-4 cursor-pointer font-regular">
-        Read Full Article
+      <div className="h-[40px] w-fit rounded-full grad-btn--purple text-white flex gap-2 items-center justify-center mt-4 cursor-pointer font-regular px-4">
+        <FaEye />
+        View Full Article
       </div>
     </>
   );

@@ -36,6 +36,28 @@ body {
     transform: translateX(-50%);
 }
 
-.flare{
+.flare {
     @include flare(#0008ff);
+}
+
+.grad-btn--purple {
+    background: 0075FF;
+    background: linear-gradient(151deg, rgba(93, 0, 255, 1) 21%, rgba(184, 13, 242, 1) 72%);
+    transition: .2s ease-out all;
+    transform: scale(1);
+
+    &:hover{
+        transform: scale(1.075);
+    }
+}
+
+.grad-btn--blue {
+    background: #0075FF;
+    background: linear-gradient(151deg, #002aff 21%, #00a2ff 72%);
+    transition: .2s ease-out all;
+    transform: scale(1);
+
+    &:hover{
+        transform: scale(1.075);
+    }
 }

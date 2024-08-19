@@ -14,7 +14,7 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       fontFamily: {
-        inter: ["var(--font-inter)"]
+        inter: ["var(--font-inter)"],
       },
       colors: {
         brandOne: "var(--brand-one)",
@@ -23,7 +23,19 @@ const config: Config = {
         brandFour: "var(--brand-four)",
         brandFive: "var(--brand-five)",
         brandSix: "var(--brand-six)",
-      }
+      },
+    },
+    keyframes: {
+      "pulse-grow": {
+        "0%": { transform: "scale(1)" },
+        "20%": { transform: "scale(1.14)" },
+        "30%": { transform: "scale(1)" },
+        "60%": { transform: "scale(1.04)" },
+        "80%": { transform: "scale(1)" },
+      },
+    },
+    animation: {
+      pulseGrow: "pulse-grow 2.5s ease-in-out infinite",
     },
   },
   plugins: [],

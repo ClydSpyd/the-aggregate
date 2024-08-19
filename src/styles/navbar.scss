@@ -22,12 +22,14 @@
 
     .nav-item {
         border-bottom: 2px solid var(--hover-color);
-        transition: .3s all ease-in-out;
-        border-radius: 2px;
+        transition: .2s color ease-out, .2s background-color ease-out, .2s transform ease-out;
+        transform: scale(1);
         
         &:hover {
             background-color: var(--hover-color);
+            border-radius: 2px;
             color: black;
+            transform: scale(1.15);
         }
     }
 }

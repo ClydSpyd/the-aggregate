@@ -1,26 +1,37 @@
 import Image from "next/image";
-import { useRef } from "react";
-import { IoShareSocial, IoBookmarkOutline } from "react-icons/io5";
+import { useRef, useState } from "react";
+import { IoBookmarkOutline } from "react-icons/io5";
 import { AiOutlineShareAlt } from "react-icons/ai";
-
+import { cn } from "@/lib/utils";
+import ArticlePreview from "./article-preview";
 
 interface Props {
   article: PerigonArticle;
 }
 export default function ArticleCard({ article }: Props) {
+  const [expandedState, setExpandedState] = useState(false);
+
+  let timer: NodeJS.Timeout;
   const containerRef = useRef<HTMLDivElement>(null);
-  // useEffect(() => {
-  //   if (containerRef.current) {
-  //     containerRef.current.style.setProperty(
-  //       "--image-url",
-  //       `url(${article.imageUrl})`
-  //     );
-  //   }
-  // }, [article]);
+
+  const handleMouseEnter = () => {
+    timer = setTimeout(() => {
+      setExpandedState(true);
+    },600)
+  }
+
+  const handleMouseLeave = () => {
+    clearTimeout(timer);
+    setExpandedState(false);
+  }
   return (
     <div
       ref={containerRef}
-      className="cardContainer flex flex-col items-center justify-between rounded-2xl overflow-hidden h-full mx-2 p-2 pb-0 border border-white/20 group hover:border-white/40 ease-out duration-300"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className={cn(
+        "cardContainer flex flex-col items-center justify-between rounded-2xl h-full mx-2 p-2 pb-0 z-50 border border-white/20 group hover:border-white/40 ease-out duration-300 relative"
+      )}
     >
       <div className="h-[170px] w-full relative rounded-xl overflow-hidden">
         <Image
@@ -45,6 +56,9 @@ export default function ArticleCard({ article }: Props) {
           </div>
         </div>
       </div>
+      {expandedState && (
+        <ArticlePreview containerRef={containerRef} article={article} />
+      )}
     </div>
   );
 }

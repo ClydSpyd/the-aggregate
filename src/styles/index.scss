@@ -39,28 +39,42 @@ body {
 .flare {
     @include flare(#0008ff);
 }
-
-.grad-btn--purple {
-    background: 0075FF;
-    background: linear-gradient(151deg, rgba(93, 0, 255, 1) 21%, rgba(184, 13, 242, 1) 72%);
-    transition: .2s ease-out all;
+         
+.grad-btn--purple  {
+    background-image: linear-gradient(to right, #DA22FF 0%, #9733EE  51%, #DA22FF  100%);
+    transition: 0.5s;
     transform: scale(1);
+    background-size: 200% auto;
 
-    &:hover{
-        transform: scale(1.075);
+    &:hover {
+      background-position: right center; /* change direction grad */
+      transform: scale(1.075);
     }
-}
-
-.grad-btn--blue {
-    background: #0075FF;
-    background: linear-gradient(151deg, #002aff 21%, #00a2ff 72%);
-    transition: .2s ease-out all;
+  }
+         
+.grad-btn--blue  {
+    background-image: linear-gradient(to right, #1FA2FF 0%, #12D8FA  51%, #1FA2FF  100%);
+    transition: 0.5s;
     transform: scale(1);
+    background-size: 200% auto;
 
-    &:hover{
-        transform: scale(1.075);
+    &:hover {
+      background-position: right center; /* change direction grad */
+      transform: scale(1.075);
     }
-}
+  }
+         
+.grad-btn--green  {
+    background-image: linear-gradient(to right, #FDFC47 0%, #24FE41  51%, #FDFC47  100%);
+    transition: 0.5s;
+    transform: scale(1);
+    background-size: 200% auto;
+
+    &:hover {
+      background-position: right center; /* change direction grad */
+      transform: scale(1.075);
+    }
+  }
 
 .track-title {
     border-bottom: 2px solid;

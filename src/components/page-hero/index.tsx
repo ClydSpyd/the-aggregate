@@ -7,11 +7,20 @@ import { useEffect, useState } from "react";
 import { FaEye } from "react-icons/fa";
 
 
-const SlideContent = ({ story }: { story: PerigonArticle }) => {
+const SlideContent = ({
+  story,
+  slideIdx,
+}: {
+  story: PerigonArticle;
+  slideIdx: number;
+}) => {
   const { title, description } = story;
+
+  const btnClasses = ["--purple", "--blue", "--green"];
+  const btnClassSuffix = btnClasses[slideIdx % btnClasses.length]
   return (
     <>
-      <h1 className="text-[35px] leading-tight text-white font-bold mb-2 max-w-[650px] ">
+      <h1 className="text-[35px] leading-tight text-white font-bold mb-2 max-w-[650px] z-0">
         {title}
       </h1>
       <p className="text-md max-w-[600px] ">
@@ -19,7 +28,9 @@ const SlideContent = ({ story }: { story: PerigonArticle }) => {
           ? `${description.slice(0, 199)}...`
           : description}
       </p>
-      <div className="h-[40px] w-fit rounded-full grad-btn--purple text-white flex gap-2 items-center justify-center mt-4 cursor-pointer font-regular px-4">
+      <div
+        className={`h-[40px] w-fit rounded-lg text-white flex gap-2 items-center justify-center mt-4 cursor-pointer font-regular px-4 grad-btn${btnClassSuffix}`}
+      >
         <FaEye />
         View Full Article
       </div>
@@ -54,13 +65,19 @@ export default function PageHero({
             className="absolute w-full h-full group-hover:scale-[1.06] ease-out duration-300"
           />
           <div ref={nextRef} className="textContainer waitLeft">
-            <SlideContent story={topStories[slideData.nextIdx]} />
+            <SlideContent
+              story={topStories[slideData.nextIdx]}
+              slideIdx={slideData.nextIdx}
+            />
           </div>
           <div ref={currentRef} className="textContainer">
-            <SlideContent story={topStories[slideData.currentIdx]} />
+            <SlideContent
+              story={topStories[slideData.currentIdx]}
+              slideIdx={slideData.currentIdx}
+            />
           </div>
           <div className="grad-overlay-bottom" />
-          <div className="absolute-center-horiz flex bottom-[10px] z-10">
+          <div className="absolute-center-horiz flex bottom-[10px] z-5">
             {topStories.map((i, idx) => (
               <div
                 onClick={() => handleNext(idx)}

@@ -23,6 +23,7 @@ const config: Config = {
         brandFour: "var(--brand-four)",
         brandFive: "var(--brand-five)",
         brandSix: "var(--brand-six)",
+        brandSeven: "var(--brand-seven)",
       },
     },
     keyframes: {

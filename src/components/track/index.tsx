@@ -49,10 +49,10 @@ interface Props {
 // };
 
 const accentColors = [
+  brandColors[2],
   brandColors[1],
   brandColors[4],
   brandColors[5],
-  brandColors[2],
   brandColors[3],
   brandColors[1],
 ];
@@ -72,14 +72,15 @@ export default function Track({ title, articles, idx }: Props) {
   };
 
   const titleRef = useRef<HTMLDivElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
   useEffect(() => {
-    if (titleRef.current) {
-      titleRef.current.style.setProperty("--accent-color", accentColors[idx]);
+    if (containerRef.current) {
+      containerRef.current.style.setProperty("--accent-color", accentColors[idx]);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <div className="w-full px-10">
+    <div ref={containerRef} className="w-full px-10">
       <div ref={titleRef} className="track-title mb-4 mx-auto py-2 flex items-center justify-between w-[calc(100%-20px)]">
         <div className="flex gap-3 items-center">
           <h2 className="text-xl font-semibold">{title}</h2>

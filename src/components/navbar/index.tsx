@@ -73,7 +73,7 @@ export default function Navbar() {
       {/* // sticky version */}
       <div
         className={cn(
-          "nav-container transition-transform duration-300 ease-out top-0 z-20 rounded-2xl sticky h-[75px] px-10 pt-4 mb-[-70px] shadow-md bg-slate-900 backdrop-blur-sm bg-opacity-90",
+          "nav-container transition-transform duration-300 ease-out top-0 z-[100] rounded-2xl sticky h-[75px] px-10 pt-4 mb-[-70px] shadow-md bg-slate-900 backdrop-blur-sm bg-opacity-90",
           isSticky
             ? "translate-y-[40px] md:translate-y-[-15px] opacity-100 pointer-events-auto"
             : "md:translate-y-[-50px] opacity-0 pointer-events-none"

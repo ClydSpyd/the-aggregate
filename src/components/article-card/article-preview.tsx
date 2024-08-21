@@ -27,7 +27,7 @@ export default function ArticlePreview({
   return (
     <div
       className={cn(
-        "h-fit min-h-[250px] w-[500px] rounded-xl shadow-lg bg-slate-900 border border-white/40 backdrop-blur-sm bg-opacity-90 absolute ease-out duration-300 px-6 py-4",
+        "h-fit min-h-[250px] w-[450px] rounded-xl shadow-lg bg-slate-900 border border-white/40 backdrop-blur-sm bg-opacity-90 absolute ease-out duration-300 px-6 py-4",
         visible ? "" : "opacity-0"
       )}
       style={getPopupPosition(containerRef)}
@@ -35,7 +35,7 @@ export default function ArticlePreview({
       <div className="w-full flex justify-start items-center mb-2 gap-1">
         {article.source.domain ? (
           <p className="text-[var(--accent-color)] text-lg font-semibold rounded-full">
-            {article.source.domain},
+            {article.source.domain}
           </p>
         ) : (
           <p></p>
@@ -44,14 +44,14 @@ export default function ArticlePreview({
           {format(new Date(article.addDate), "EEEE do MMMM y")}
         </p>
       </div>
-      <h1 className="text-2xl font-semibold mb-2">{article.title}</h1>
-      <div className="min-h-[100px] flex items-center justify-center">
+      <h1 className="text-xl font-semibold mb-2">{article.title}</h1>
+      <div className="min-h-[70px] flex items-center justify-center">
         {article.content.length > 10 ? (
-          <p className="text-slate-300">
+          <p className="text-slate-300 text-sm">
             {article.content.slice(0, bracketIdx)}
           </p>
         ) : (
-          <p className="text-xs text-white/20">[no preview found]</p>
+          <p className="text-xs text-white/20 relative bottom-2">[no preview found]</p>
         )}
       </div>
       <div className="w-full flex justify-between items-center mt-3">

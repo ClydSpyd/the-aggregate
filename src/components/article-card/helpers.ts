@@ -16,8 +16,8 @@ export const getPopupPosition = (
   const isOverflow = overflowLeft || overflowRight;
 
   const topPosition = "-200px";
-  const leftPosition = extremeLeft ? "110%" : "50%";
-  const rightPosition = extremeRight ? "-90%" : undefined;
+  const leftPosition = extremeLeft ? "95%" : "50%";
+  const rightPosition = extremeRight ? "-95%" : undefined;
 
   console.log({
     overRight: viewportWidth - cardRect.right,

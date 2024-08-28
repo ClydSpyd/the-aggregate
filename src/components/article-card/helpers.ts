@@ -16,7 +16,7 @@ export const getPopupPosition = (
   const isOverflow = overflowLeft || overflowRight;
 
   const topPosition = "-200px";
-  const leftPosition = extremeLeft ? "95%" : "50%";
+  const leftPosition = extremeLeft ? "80%" : "50%";
   const rightPosition = extremeRight ? "-95%" : undefined;
 
   console.log({

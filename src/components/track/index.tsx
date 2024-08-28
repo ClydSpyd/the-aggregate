@@ -11,6 +11,7 @@ interface Props {
   idx: number;
   title: string;
   articles: PerigonArticle[];
+  category: ArticleCategory;
 }
 
 // var resSettings = {
@@ -58,7 +59,7 @@ const accentColors = [
 ];
 
 
-export default function Track({ title, articles, idx }: Props) {
+export default function Track({ title, articles, idx, category }: Props) {
   let sliderRef = useRef<Slider | null>(null);
   const settings = {
     dots: false,
@@ -114,7 +115,7 @@ export default function Track({ title, articles, idx }: Props) {
       <div className="w-full px-2">
         <Slider ref={sliderRef} {...settings}>
           {articles.map((i: PerigonArticle) => (
-            <ArticleCard key={i.articleId} article={i} />
+            <ArticleCard key={i.articleId} article={i} category={category} />
           ))}
         </Slider>
       </div>

@@ -3,13 +3,16 @@ import { getPopupPosition } from "./helpers";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import { FaEye } from "react-icons/fa";
+import Link from "next/link";
 
 export default function ArticlePreview({
   containerRef,
   article,
+  category
 }: {
   containerRef: React.RefObject<HTMLDivElement>;
   article: PerigonArticle;
+  category: ArticleCategory;
 }) {
   const [visible, setVisible] = useState(false);
 
@@ -23,6 +26,7 @@ export default function ArticlePreview({
   }, []);
 
   const bracketIdx = article.content.indexOf("[");
+  const articleUrl = `/read/${category}/${article.articleId}`;
 
   return (
     <div
@@ -51,7 +55,9 @@ export default function ArticlePreview({
             {article.content.slice(0, bracketIdx)}
           </p>
         ) : (
-          <p className="text-xs text-white/20 relative bottom-2">[no preview found]</p>
+          <p className="text-xs text-white/20 relative bottom-2">
+            [no preview found]
+          </p>
         )}
       </div>
       <div className="w-full flex justify-between items-center mt-3">
@@ -69,12 +75,14 @@ export default function ArticlePreview({
         ) : (
           <p></p>
         )}
-        <div
-          className={`h-[35px] text-sm w-fit rounded-lg text-slate-900 flex gap-2 items-center justify-center font-regular cursor-pointer px-4 bg-[var(--accent-color)] ease-out duration-200 hover:scale-105`}
-        >
-          <FaEye size={20} />
-          View Article
-        </div>
+        <Link href={articleUrl}>
+          <div
+            className={`h-[35px] text-sm w-fit rounded-lg text-slate-900 flex gap-2 items-center justify-center font-regular cursor-pointer px-4 bg-[var(--accent-color)] ease-out duration-200 hover:scale-105`}
+          >
+            <FaEye size={20} />
+            View Article
+          </div>
+        </Link>
       </div>
     </div>
   );

@@ -7,8 +7,9 @@ import ArticlePreview from "./article-preview";
 
 interface Props {
   article: PerigonArticle;
+  category: ArticleCategory;
 }
-export default function ArticleCard({ article }: Props) {
+export default function ArticleCard({ article, category }: Props) {
   const [expandedState, setExpandedState] = useState(false);
 
   let timer: NodeJS.Timeout;
@@ -17,13 +18,13 @@ export default function ArticleCard({ article }: Props) {
   const handleMouseEnter = () => {
     timer = setTimeout(() => {
       setExpandedState(true);
-    },600)
-  }
+    }, 600);
+  };
 
   const handleMouseLeave = () => {
     clearTimeout(timer);
     setExpandedState(false);
-  }
+  };
   return (
     <div
       ref={containerRef}
@@ -57,7 +58,7 @@ export default function ArticleCard({ article }: Props) {
         </div>
       </div>
       {expandedState && (
-        <ArticlePreview containerRef={containerRef} article={article} />
+        <ArticlePreview containerRef={containerRef} article={article} category={category} />
       )}
     </div>
   );

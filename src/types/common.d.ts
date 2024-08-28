@@ -14,4 +14,5 @@ declare type ArticleCategory =
   | "politics"
   | "tech"
   | "travel"
-  | "science";
+  | "science"
+  | "lifestyle";

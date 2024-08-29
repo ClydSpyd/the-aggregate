@@ -10,7 +10,6 @@ interface Props {
   idx: number;
   title: string;
   articles: PerigonArticle[];
-  category: ArticleCategory;
 }
 
 // var resSettings = {
@@ -48,7 +47,7 @@ interface Props {
 //   ],
 // };
 
-export default function Track({ title, articles, idx, category }: Props) {
+export default function Track({ title, articles, idx }: Props) {
   let sliderRef = useRef<Slider | null>(null);
   const settings = {
     dots: false,

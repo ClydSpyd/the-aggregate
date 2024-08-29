@@ -8,11 +8,9 @@ import Link from "next/link";
 export default function ArticlePreview({
   containerRef,
   article,
-  category
 }: {
   containerRef: React.RefObject<HTMLDivElement>;
   article: PerigonArticle;
-  category: ArticleCategory;
 }) {
   const [visible, setVisible] = useState(false);
 
@@ -26,7 +24,7 @@ export default function ArticlePreview({
   }, []);
 
   const bracketIdx = article.content.indexOf("[");
-  const articleUrl = `/read/${category}/${article.articleId}`;
+  const articleUrl = `/read/${article.articleCategory}/${article.articleId}`;
 
   return (
     <div

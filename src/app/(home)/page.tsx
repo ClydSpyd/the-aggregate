@@ -5,10 +5,10 @@ import PageLoader from "@/components/page-loader";
 
 export default function HomePage() {
   const [loading, setLoading] = useState(true);
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setLoading(false);
-  //   }, 3500);
-  // },[])
-  return loading ? <PageLoader message="hello world this is a long message" /> : <HomeContent />;
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
+  },[])
+  return loading ? <PageLoader /> : <HomeContent />;
 }

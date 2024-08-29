@@ -48,35 +48,14 @@ export default function HomeContent() {
         />
         <div className="w-full mt-5 flex flex-col gap-10">
           <Track
-            category={"tech"}
             idx={0}
             title="Tech"
             articles={storiesTech?.slice(5, 20) ?? []}
           />
-          <Track
-            category={"sports"}
-            idx={1}
-            title="Sports"
-            articles={storiesSports ?? []}
-          />
-          <Track
-            category={"politics"}
-            idx={2}
-            title="Politics"
-            articles={storiesPolitics ?? []}
-          />
-          <Track
-            category={"science"}
-            idx={3}
-            title="Science"
-            articles={storiesScience ?? []}
-          />
-          <Track
-            category={"lifestyle"}
-            idx={4}
-            title="Lifestyle"
-            articles={storiesLifestyle ?? []}
-          />
+          <Track idx={1} title="Sports" articles={storiesSports ?? []} />
+          <Track idx={2} title="Politics" articles={storiesPolitics ?? []} />
+          <Track idx={3} title="Science" articles={storiesScience ?? []} />
+          <Track idx={4} title="Lifestyle" articles={storiesLifestyle ?? []} />
         </div>
       </>
     )

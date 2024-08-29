@@ -1,3 +1,4 @@
+import routes from "@/constants/routes";
 import axios from "axios";
 
 const fileLocations: Partial<Record<ArticleCategory, string>> = {
@@ -15,10 +16,16 @@ const getStoriesByCategory = async (
   const url = fileLocations[category]!;
   const { data } = await axios.get(url);
   console.log({ data });
-  return data.articles.filter(
-    (i: PerigonArticle) =>
-      i.title.length < 85 && i.title.length > 30 && i.imageUrl !== ""
-  );
+  return data.articles
+    .filter(
+      (i: PerigonArticle) =>
+        i.title.length < 85 && i.title.length > 30 && i.imageUrl !== ""
+    )
+    .map((article: PerigonArticle) => ({
+      ...article,
+      articleCategory: category,
+      internalUrl: `/${routes.article}/${category}/${article.articleId}`
+    }));
 };
 
 const getStoryById = async (

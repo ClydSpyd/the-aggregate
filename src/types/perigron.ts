@@ -22,4 +22,6 @@ declare interface PerigonArticle {
   source: { domain: string; paywall: boolean };
   title: string;
   url: string;
+  articleCategory: ArticleCategory;
+  internalUrl: string;
 }

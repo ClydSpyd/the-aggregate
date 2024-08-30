@@ -3,15 +3,9 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
-import {brandColors } from '@/styles/color-config';
+import {accentColors, brandColors } from '@/styles/color-config';
 
-export default function NavItem({
-  item: { text, href },
-  idx
-}: {
-  item: NavItem;
-  idx: number;
-}) {
+export default function NavItem({ item: { text, href } }: { item: NavItem }) {
   const pathname = usePathname();
   const isActive = pathname === href;
   const textRef = useRef<HTMLHeadingElement>(null);
@@ -25,11 +19,13 @@ export default function NavItem({
     brandColors[1],
   ];
 
+  const accentColor = accentColors[text];
+
   useEffect(() => {
     if (textRef.current) {
-      textRef.current.style.setProperty("--hover-color", hoverColors[idx]);
+      textRef.current.style.setProperty("--hover-color", String(accentColor));
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   console.log({ hoverColors });
@@ -41,7 +37,7 @@ export default function NavItem({
         ref={textRef}
         className={cn(`nav-item text-sm h-[20px] relative font-regular`)}
       >
-        <h3 className="px-1">{text}</h3>
+        <h3 className="px-1 capitalize">{text}</h3>
         <div
           className={cn(
             "w-full transition-all duration-300 ease-in-out bg-white absolute bottom-0 left-0",

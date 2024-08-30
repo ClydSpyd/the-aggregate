@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import ArticlePreview from "./article-preview";
 import { redirect } from "next/navigation";
 import Link from "next/link";
+import ArticleActionBtns from "../article-action-btns";
 
 interface Props {
   article: PerigonArticle;
@@ -61,7 +62,10 @@ export default function ArticleCard({ article }: Props) {
           <div className="w-full grow">
             <p className="text-sm leading-tight">{article.title}</p>
           </div>
-          <div
+          <span onClick={handleWidgetClick}>
+            <ArticleActionBtns articleId={article.articleId} />
+          </span>
+          {/* <div
             onClick={handleWidgetClick}
             className="w-full h-[30px] flex justify-end gap-3"
           >
@@ -71,7 +75,7 @@ export default function ArticleCard({ article }: Props) {
             <div className="h-[25px] w-[25px] rounded-md border flex items-center justify-center opacity-40 ease-out duration-500 group-hover:opacity-80 hover:!opacity-100 hover:scale-[1.15]">
               <AiOutlineShareAlt size={20} />
             </div>
-          </div>
+          </div> */}
         </div>
         {expandedState && (
           <ArticlePreview containerRef={containerRef} article={article} />

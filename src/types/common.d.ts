@@ -1,5 +1,5 @@
 interface NavItem {
-  text: string;
+  text: ArticleCategory;
   href: string;
 }
 

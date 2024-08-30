@@ -10,27 +10,27 @@ import Link from "next/link";
 
 const navItems: NavItem[] = [
   {
-    text: "Latest",
+    text: "trending",
     href: "/latest",
   },
   {
-    text: "Business",
-    href: "/business",
-  },
-  // {
-  //     text: "Science",
-  //     href: "/science"
-  // },
-  {
-    text: "Tech",
+    text: "tech",
     href: "/tech",
   },
   {
-    text: "Sports",
+    text: "sports",
     href: "/sports",
   },
   {
-    text: "Politics",
+    text: "science",
+    href: "/science",
+  },
+  {
+    text: "politics",
+    href: "/politics",
+  },
+  {
+    text: "lifestyle",
     href: "/politics",
   },
 ];
@@ -44,8 +44,8 @@ const Content = () => {
         </Link>
       </div>
       <div className="items">
-        {navItems.map((item: NavItem, idx: number) => (
-          <NavItem key={item.href} item={item} idx={idx} />
+        {navItems.map((item: NavItem) => (
+          <NavItem key={item.href} item={item} />
         ))}
       </div>
       <div className="options">

@@ -53,8 +53,8 @@ export default function HomeContent() {
             articles={storiesTech?.slice(5, 20) ?? []}
           />
           <Track idx={1} title="Sports" articles={storiesSports ?? []} />
-          <Track idx={2} title="Politics" articles={storiesPolitics ?? []} />
           <Track idx={3} title="Science" articles={storiesScience ?? []} />
+          <Track idx={2} title="Politics" articles={storiesPolitics ?? []} />
           <Track idx={4} title="Lifestyle" articles={storiesLifestyle ?? []} />
         </div>
       </>

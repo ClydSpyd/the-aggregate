@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import useCarousel from "./useCarousel";
 import { useEffect, useState } from "react";
 import { FaEye } from "react-icons/fa";
+import Link from "next/link";
 
 
 const SlideContent = ({
@@ -14,7 +15,7 @@ const SlideContent = ({
   story: PerigonArticle;
   slideIdx: number;
 }) => {
-  const { title, description } = story;
+  const { title, description, internalUrl } = story;
 
   const btnClasses = ["--purple", "--blue", "--green"];
   const btnClassSuffix = btnClasses[slideIdx % btnClasses.length]
@@ -28,12 +29,14 @@ const SlideContent = ({
           ? `${description.slice(0, 199)}...`
           : description}
       </p>
-      <div
-        className={`h-[40px] w-fit rounded-lg text-white flex gap-2 items-center justify-center mt-4 cursor-pointer font-regular px-4 grad-btn${btnClassSuffix}`}
-      >
-        <FaEye />
-        View Full Article
-      </div>
+      <Link href={internalUrl}>
+        <div
+          className={`h-[40px] w-fit rounded-lg text-white flex gap-2 items-center justify-center mt-4 cursor-pointer font-regular px-4 grad-btn${btnClassSuffix}`}
+        >
+          <FaEye />
+          View Full Article
+        </div>
+      </Link>
     </>
   );
 };

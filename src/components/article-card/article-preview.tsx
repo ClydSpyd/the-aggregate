@@ -43,7 +43,7 @@ export default function ArticlePreview({
           <p></p>
         )}
         <p className="text-[10px] text-white/50 mt-[6px]">
-          {format(new Date(article.addDate), "EEEE do MMMM y")}
+          {format(new Date(article.addDate), "EEEE do MMMM, y")}
         </p>
       </div>
       <h1 className="text-xl font-semibold mb-2">{article.title}</h1>

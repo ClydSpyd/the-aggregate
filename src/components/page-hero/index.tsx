@@ -6,6 +6,7 @@ import useCarousel from "./useCarousel";
 import { useEffect, useState } from "react";
 import { FaEye } from "react-icons/fa";
 import Link from "next/link";
+import ArticleActionBtns from "../article-action-btns";
 
 
 const SlideContent = ({
@@ -15,7 +16,7 @@ const SlideContent = ({
   story: PerigonArticle;
   slideIdx: number;
 }) => {
-  const { title, description, internalUrl } = story;
+  const { title, description, internalUrl, articleId } = story;
 
   const btnClasses = ["--purple", "--blue", "--green"];
   const btnClassSuffix = btnClasses[slideIdx % btnClasses.length]
@@ -29,14 +30,17 @@ const SlideContent = ({
           ? `${description.slice(0, 199)}...`
           : description}
       </p>
-      <Link href={internalUrl}>
-        <div
-          className={`h-[40px] w-fit rounded-lg text-white flex gap-2 items-center justify-center mt-4 cursor-pointer font-regular px-4 grad-btn${btnClassSuffix}`}
-        >
-          <FaEye />
-          View Full Article
-        </div>
-      </Link>
+      <div className="flex gap-4 items-center mt-4">
+        <Link href={internalUrl}>
+          <div
+            className={`h-[40px] w-fit rounded-lg text-white flex gap-2 items-center justify-center cursor-pointer font-regular px-4 grad-btn${btnClassSuffix}`}
+          >
+            <FaEye />
+            View Full Article
+          </div>
+        </Link>
+        <ArticleActionBtns articleId={articleId} />
+      </div>
     </>
   );
 };
@@ -46,13 +50,21 @@ export default function PageHero({
 }: {
   topStories: PerigonArticle[];
 }) {
-  const [imageUrl, setImageUrl] = useState<string>(topStories[0].imageUrl);
+  const [displayData, setDisplayData] = useState({
+    imageUrl: topStories[0].imageUrl,
+    articleId: topStories[0].articleId,
+    source: topStories[0].source.domain,
+  });
 
   const { handleNext, slideData, nextRef, currentRef } =
     useCarousel(topStories);
 
   useEffect(() => {
-    setImageUrl(topStories[slideData.imgIdx].imageUrl);
+    setDisplayData({
+      imageUrl: topStories[slideData.imgIdx].imageUrl,
+      articleId: topStories[slideData.imgIdx].articleId,
+      source: topStories[slideData.imgIdx].source.domain,
+    });
   }, [slideData.imgIdx]);
 
   return (
@@ -61,7 +73,7 @@ export default function PageHero({
         <div className="overflow-hidden rounded-3xl w-full h-full flex items-end px-8 py-6 relative">
           <Image
             alt={"hero image"}
-            src={imageUrl}
+            src={displayData.imageUrl}
             layout="fill"
             objectFit="cover"
             objectPosition="top"
@@ -101,6 +113,10 @@ export default function PageHero({
               </div>
             ))}
           </div>
+          {/* <div className="flex gap-3 absolute top-5 right-5">
+            <h1 className="text-lg relative bottom-[2px]">{displayData.source}</h1>
+            <ArticleActionBtns articleId={displayData.articleId} />
+          </div> */}
         </div>
       </div>
     )

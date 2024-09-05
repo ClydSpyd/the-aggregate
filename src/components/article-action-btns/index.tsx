@@ -19,15 +19,27 @@ export default function ArticleActionBtns({
     toggleBookmarked(bookmarks.includes(articleId));
   }, [articleId, bookmarks]);
 
+  const handleWidgetClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+
   return (
-    <div className="w-full h-[30px] flex justify-end gap-3">
+    <div
+      onClick={(e) => {
+        handleWidgetClick(e);
+      }}
+      className="h-fit flex justify-end gap-3"
+    >
       <div
         onClick={() => {
           handleBookmark(articleId);
         }}
         className={cn(
           "h-[25px] w-[25px] rounded-md border flex items-center justify-center ease-out duration-500 group-hover:opacity-80 hover:!opacity-100 hover:scale-[1.15] cursor-pointer",
-          isBookmarked ? "opacity-100 border-[var(--accent-color)]" : "opacity-40"
+          isBookmarked
+            ? "opacity-100 border-[var(--accent-color)]"
+            : "opacity-40"
         )}
       >
         {isBookmarked ? (

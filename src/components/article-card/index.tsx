@@ -1,16 +1,16 @@
 import Image from "next/image";
 import { useRef, useState } from "react";
-import { IoBookmarkOutline } from "react-icons/io5";
-import { AiOutlineShareAlt } from "react-icons/ai";
 import { cn } from "@/lib/utils";
 import ArticlePreview from "./article-preview";
-import { redirect } from "next/navigation";
 import Link from "next/link";
 import ArticleActionBtns from "../article-action-btns";
 
 interface Props {
   article: PerigonArticle;
 }
+
+const expand_timeout = 800;
+
 export default function ArticleCard({ article }: Props) {
   const [expandedState, setExpandedState] = useState(false);
 
@@ -20,7 +20,7 @@ export default function ArticleCard({ article }: Props) {
   const handleMouseEnter = () => {
     timer = setTimeout(() => {
       setExpandedState(true);
-    },600)
+    },expand_timeout)
   }
 
   const handleMouseLeave = () => {
@@ -29,14 +29,9 @@ export default function ArticleCard({ article }: Props) {
   }
 
   const handleWidgetClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-  }
+    handleMouseLeave();
+  };
 
-  // const handleRedirect = () => {
-  //   console.log({ URL: article.internalUrl });
-  //   redirect(article.internalUrl);
-  // };
 
   return (
     <Link href={article.internalUrl}>
@@ -62,20 +57,14 @@ export default function ArticleCard({ article }: Props) {
           <div className="w-full grow">
             <p className="text-sm leading-tight">{article.title}</p>
           </div>
-          <span onClick={handleWidgetClick}>
+          <span
+            onClick={handleWidgetClick}
+            // onMouseEnter={handleMouseLeave}
+            // onMouseLeave={handleMouseEnter}
+            className="mb-1"
+          >
             <ArticleActionBtns articleId={article.articleId} />
           </span>
-          {/* <div
-            onClick={handleWidgetClick}
-            className="w-full h-[30px] flex justify-end gap-3"
-          >
-            <div className="h-[25px] w-[25px] rounded-md border flex items-center justify-center opacity-40 ease-out duration-500 group-hover:opacity-80 hover:!opacity-100 hover:scale-[1.15]">
-              <IoBookmarkOutline size={18} />
-            </div>
-            <div className="h-[25px] w-[25px] rounded-md border flex items-center justify-center opacity-40 ease-out duration-500 group-hover:opacity-80 hover:!opacity-100 hover:scale-[1.15]">
-              <AiOutlineShareAlt size={20} />
-            </div>
-          </div> */}
         </div>
         {expandedState && (
           <ArticlePreview containerRef={containerRef} article={article} />

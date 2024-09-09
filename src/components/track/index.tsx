@@ -4,64 +4,91 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useEffect, useRef } from "react";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
-import { accentColors } from "@/styles/color-config";
+import { accentColors, contrastColors } from "@/styles/color-config";
+import { CtaCard } from "../cta-card";
 
+const settings = {
+  dots: false,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 5,
+  slidesToScroll: 1,
+  pauseOnHover: true,
+  arrows: false,
+  variableWidth: false,
+  responsive: [
+    {
+      breakpoint: 1400,
+      settings: {
+        slidesToShow: 4,
+      },
+    },
+    {
+      breakpoint: 1100,
+      settings: {
+        slidesToShow: 3,
+      },
+    },
+    {
+      breakpoint: 900,
+      settings: {
+        slidesToShow: 2,
+      },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 1,
+      },
+    },
+  ],
+};
 interface Props {
   idx: number;
   title: string;
   articles: PerigonArticle[];
+  ctaIdx?: number;
 }
 
-export default function Track({ title, articles, idx }: Props) {
+export default function Track({ title, articles, idx, ctaIdx }: Props) {
   let sliderRef = useRef<Slider | null>(null);
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 5,
-    slidesToScroll: 1,
-    pauseOnHover: true,
-    arrows: false,
-    variableWidth: false,
-    responsive: [
-      {
-        breakpoint: 1400,
-        settings: {
-          slidesToShow: 4,
-        },
-      },
-      {
-        breakpoint: 1100,
-        settings: {
-          slidesToShow: 3,
-        },
-      },
-      {
-        breakpoint: 900,
-        settings: {
-          slidesToShow: 2,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-        },
-      },
-    ],
-  };
 
-  const titleRef = useRef<HTMLDivElement>(null)
-  const containerRef = useRef<HTMLDivElement>(null)
+  const titleRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     if (containerRef.current) {
       containerRef.current.style.setProperty(
         "--accent-color",
         Object.values(accentColors)[idx]
       );
+      containerRef.current.style.setProperty(
+        "--contrast-color",
+        Object.values(contrastColors)[idx]
+      );
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const cardsWithMultipleCtas = (
+    interval: number,
+    startIndex: number
+  ): JSX.Element[] => {
+    let result: JSX.Element[] = [];
+    let ctaIndex = startIndex;
+
+    for (let i = 0; i < articles.length; i++) {
+      if (i === ctaIndex) {
+        result.push(<CtaCard key={`cta-card-${ctaIndex}`} />);
+        ctaIndex += interval;
+      }
+      result.push(
+        <ArticleCard key={articles[i].articleId} article={articles[i]} />
+      );
+    }
+
+    return result;
+  };
   return (
     <div ref={containerRef} className="w-full px-10">
       <div
@@ -101,9 +128,11 @@ export default function Track({ title, articles, idx }: Props) {
       </div>
       <div className="w-full px-2">
         <Slider ref={sliderRef} {...settings}>
-          {articles.map((i: PerigonArticle) => (
-            <ArticleCard key={i.articleId} article={i} />
-          ))}
+          {ctaIdx
+            ? cardsWithMultipleCtas(5, ctaIdx)
+            : articles.map((i: PerigonArticle) => (
+                <ArticleCard key={i.articleId} article={i} />
+              ))}
         </Slider>
       </div>
     </div>

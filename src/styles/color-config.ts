@@ -9,6 +9,17 @@ export const brandColors = [
   "#F2AF0D", //7
   "#D91AE6", //8
 ];
+export const contrastColors = [
+  "#0f172ae6", //0
+  "#ffffff", //1
+  "#0f172ae6", //2
+  "#ffffff", //3
+  "#0f172ae6", //4
+  "#ffffff", //5
+  "#ffffff", //6
+  "#0f172ae6", //7
+  "#ffffff", //8
+];
 
 export const accentColors: Partial<Record<ArticleCategory, string>> = {
   tech: brandColors[2],

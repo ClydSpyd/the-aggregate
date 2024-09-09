@@ -10,11 +10,11 @@ export function CtaCard() {
   const textVariants = [
     {
       heading: "Personalize Your Feed",
-      body: "Create an account to get news tailored to your interests and preferences.",
+      body: "Create a free account to get news tailored to your interests and preferences.",
     },
     {
       heading: "Tailored News, Just for You",
-      body: "Sign up now to receive personalized news based on your interests.",
+      body: "Sign up for free now to receive personalized news based on your interests.",
     },
   ];
   const textConfig = textVariants[Math.floor(Math.random() * textVariants.length)];

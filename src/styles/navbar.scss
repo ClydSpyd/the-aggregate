@@ -15,11 +15,7 @@
         justify-content: center;
         gap: 40px;
     }
-
-    .options{
-        justify-content: end;
-    }
-
+    
     .nav-item {
         border-bottom: 2px solid var(--hover-color);
         transition: .2s color ease-out, .2s background-color ease-out, .2s transform ease-out;

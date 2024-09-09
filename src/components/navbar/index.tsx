@@ -48,13 +48,21 @@ const Content = () => {
           <NavItem key={item.href} item={item} />
         ))}
       </div>
-      <div className="options">
-        <SearchWidget />
-        <div className="transition-all duration-500 ease-out flex items-center justify-center rounded-md cursor-pointer text-white text-sm h-[30px] w-[30px] border border-transparent hover:border-white bg-transparent hover:bg-white hover:bg-opacity-30">
+      <div className="flex justify-end">
+        {/* <SearchWidget /> */}
+        {/* <div className="transition-all duration-500 ease-out flex items-center justify-center rounded-md cursor-pointer text-white text-sm h-[30px] w-[30px] border border-transparent hover:border-white bg-transparent hover:bg-white hover:bg-opacity-30">
           <MdManageAccounts
             size={23}
             className="text-white pointer-events-none"
           />
+        </div> */}
+        <div className="flex items-center gap-2">
+          <div className="h-[40px] w-[100px] ease-out duration-300 flex items-center justify-center cursor-pointer border rounded-lg border-transparent hover:border-white/30">
+            log in
+          </div>
+          <div className="h-[40px] w-[130px] flex items-center justify-center cursor-pointer grad-btn--yellow font-semibold rounded-lg">
+            SUBSCRIBE
+          </div>
         </div>
       </div>
     </>

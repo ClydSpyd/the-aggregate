@@ -129,7 +129,7 @@ export default function Track({ title, articles, idx, ctaIdx }: Props) {
       <div className="w-full px-2">
         <Slider ref={sliderRef} {...settings}>
           {ctaIdx
-            ? cardsWithMultipleCtas(5, ctaIdx)
+            ? cardsWithMultipleCtas(7, ctaIdx)
             : articles.map((i: PerigonArticle) => (
                 <ArticleCard key={i.articleId} article={i} />
               ))}

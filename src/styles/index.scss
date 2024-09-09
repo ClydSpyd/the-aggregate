@@ -46,6 +46,21 @@ body {
 .flare {
     @include flare(#0008ff);
 }
+
+
+         
+.grad-btn--yellow  {
+  background-image: linear-gradient(to right, #ffde08 0%, #FFC837  51%, #ffe608  100%);
+    transition: 0.5s;
+    transform: scale(1);
+    background-size: 200% auto;
+
+    &:hover {
+      background-position: right center; /* change direction grad */
+      transform: scale(1.075);
+    }
+  }
+         
          
 .grad-btn--purple  {
     background-image: linear-gradient(to right, #DA22FF 0%, #9733EE  51%, #DA22FF  100%);

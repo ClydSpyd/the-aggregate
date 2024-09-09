@@ -16,6 +16,10 @@ export function CtaCard() {
       heading: "Tailored News, Just for You",
       body: "Sign up for free now to receive personalised news based on your interests.",
     },
+    {
+      heading: "Your News, Your Way",
+      body: "Create a free account to customize your news experience and never miss important stories.",
+    },
   ];
   const textConfig = textVariants[Math.floor(Math.random() * textVariants.length)];
   return (
